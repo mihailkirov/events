@@ -1,0 +1,19 @@
+.footer {
+  overflow: hidden;
+  background-color: #000000;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  padding: 20px 10px;
+  margin-top: 20px;
+}
+
+.footer p {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', sans-serif;
+  letter-spacing: 1px;
+}
+
