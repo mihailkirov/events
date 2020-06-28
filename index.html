@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--  Scripts-->
+  <script type="text/javascript" src="js/eventSearch.js" defer></script>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,8 +20,6 @@
   <meta property="og:url" content="">
   <meta property="og:image" content="">
 
-<!--  <link rel="manifest" href="site.webmanifest">-->
-<!--  <link rel="apple-touch-icon" href="icon.png">-->
 <!--  &lt;!&ndash; Place favicon.ico in the root directory &ndash;&gt;-->
 
 
@@ -40,13 +42,31 @@
   </div>
 </header>
 
-<p>Hello lubaki</p>
+<div class="container">
+  <div class="input-fields-location-date">
+
+    <label for="dateEvent"></label><input type="date" id="dateEvent" name="dateEvent" max="2050-12-31" min="2019-1-1">
+    <label for="country"></label><select id="country" name="country">
+        <option value="Bulgaria">Bulgaria</option>
+        <option value="France">France</option>
+        <option value="Spain">Spain</option>
+        <option value="Germany">Germany</option>
+      </select>
+    <button type="submit"><i class="fa fa-search" onClick="searchEvents()"></i></button>
+  </div>
+  <div class="events-RA" >
+
+  </div>
+
+</div>
+
 
 <footer>
   <div class="footer" >
     <p> Dance with me ! </p>
   </div>
 </footer>
+
 
 </body>
 
