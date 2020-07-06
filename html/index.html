@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <title>Dance together</title>
+
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--  Scripts-->
+  <script type="text/javascript" src="../js/eventSearch.js" defer></script>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js" defer></script>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<header>
+  <div class="header">
+    <a href=index.html class="logo">
+      <img src="../after-l.png" alt="logo" />
+    </a>
+    <div class="header-right">
+      <a class="active">Events</a>
+      <a href=contacts.html>Contacts</a>
+      <a href=about.html>About Us</a>
+    </div>
+  </div>
+</header>
+
+<div class="container-flex">
+  <div class="input-fields-location-date">
+      <label for="dateEvent"></label>
+      <input type="date" id="dateEvent" name="dateEvent" max="2050-12-31" min="2019-1-1">
+      <label for="country"></label>
+      <select id="country" name="country">
+        <option value="Bulgaria">Bulgaria</option>
+        <option value="France">Paris</option>
+        <option value="Spain">Ibiza</option>
+        <option value="Germany">Berlin</option>
+      </select>
+      <button id="submitSearch" type="submit"><i class="fa fa-search" onclick="getDataFromFields();"></i></button>
+    </div>
+  <div class="flex-content-container">
+<!--    <h1> No events in this location </h1>-->
+  </div>
+</div>
+<footer>
+  <div class="footer" >
+    <p> Dance with me ! </p>
+  </div>
+</footer>
+</body>
+</html>

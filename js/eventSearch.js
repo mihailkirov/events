@@ -1,5 +1,7 @@
+/*
+Set the date to today
+ */
 
-const baseUrl = "residentadvisor.net/events.aspx";
 
 Date.prototype.toDateInputValue = (function() {
   var local = new Date(this);
@@ -7,38 +9,75 @@ Date.prototype.toDateInputValue = (function() {
   return local.toJSON().slice(0,10);
 });
 
+// Bindings
+document.getElementById("submitSearch").addEventListener("click", getDataFromFields);
 document.getElementById('dateEvent').value = new Date().toDateInputValue();
 
-function searchEvents() {
-  let date = new Date(document.getElementById("dateEvent").value);
-  let loc = document.getElementById("country").textContent;
-  console.log(date.getUTCMonth());
-  console.log(document.getElementById("dateEvent").value)
-  let code;
+// Functions
+function getDataFromFields() {
+  // get the necessary data from the fields
+  let date = document.getElementById("dateEvent").value;
+  let loc = document.getElementById("country").value;
+
   switch (loc) {
-    case "Bulgaria" :
-      code = 95;
-      break;
-    case "Germany":
-      code = 34;
+    case "Berlin":
+      loc = 'de/berlin' ;
       break;
 
-    case "Spain":
-      code = 25;
+    case "Ibiza":
+      loc = 'es/ibiza';
       break;
-    case "France":
-      code = 45;
+    case "Paris":
+      loc = 'fr/paris';
       break;
+    default :
+      loc = 'bulgaria';
   }
-  apiRequest(date.getUTCDay(), date.getFullYear(), date.getUTCMonth(), code);
+
+  apiRequest(loc, date);
+}
+
+
+function uploadContainer(data){
+  /**
+   * Dynamically feel the container in the index page with the events received in data
+   * @type {HTMLElement}
+   */
+
+  let containerContent = document.getElementById("flex-content-container");
+  if (data === []){ // no events
+    let h1 = document.createElement("h1");
+    h1.textContent = "No events in this location";
+    containerContent.appendChild(h1);
+  }
+  else {
+    data.forEach(el =>{
+      console.log(el.nameEvent);
+      console.log(el.placeEvent);
+      console.log(el.lineup);
+      console.log(el.link);
+      console.log(el.imageLink);
+    });
+  }
+
 }
 
 //residentadvisor.net/events.aspx?ai=95&v=day&mn=7&yr=2020&dy=4​
-function apiRequest(day, year, mounth, codeCountry) {
-  const http = require('http');
+function apiRequest(location, date) {
+  /**
+   * Request information from node js server and send received data to be shown
+   */
 
-  let requestUrl = baseUrl + "?ai=" + codeCountry + "&v=day&mn=" + mounth + "&yr=" + year +"&dy=" +day;
-
-  // TODO the get request + parse of the list of dat
-
-  }
+  $.ajax({
+    data : {
+      date: date,
+      country: location,
+    },
+    type: 'POST',
+    url: 'http://0.0.0.0:62000/',
+    json: true,
+    error: function (err, status) {
+      alert("something is wrong");
+    }
+  }).done(data => uploadContainer(JSON.parse(data)));
+}

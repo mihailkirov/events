@@ -1,37 +1,21 @@
 
-.about-content-page {
+.about-content-page-flex-container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  flex-wrap: nowrap;
-}
-
-.creators-flex-container{
-  margin-top: 30px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  flex-wrap: nowrap;
-  text-align: center;
+  width: 100%;
+  flex-wrap: nowrap; /* to test */
 }
 
 .about-flex-container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: nowrap;
-  text-align: center;
-}
-
-.about-flex-container {
-  margin-top: 10px;
+  margin-top: 5px;
   margin-left: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   flex-wrap: nowrap;
   text-align: left;
+  height: 5rem;
 }
 
 .about-flex-container h3 {
@@ -39,8 +23,10 @@
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: bold;
   letter-spacing: 1px;
-  line-height: 2;
+  line-height: 1;
   opacity: 0.70;
+  font-size: xx-large;
+
 }
 
 .about-flex-container p {
@@ -52,6 +38,17 @@
   opacity: 0.70;
 }
 
+.creators-flex-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  text-align: center;
+  padding-bottom: 3rem;
+  padding-top: 5rem ;
+}
+
+
 .creator h3 {
   color: #111;
   font-family: 'Helvetica Neue', sans-serif;
@@ -61,7 +58,7 @@
   text-align: center;
 }
 
-.creator p{
+.creator p {
   color: #111;
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: normal;
