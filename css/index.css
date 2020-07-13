@@ -8,6 +8,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   max-width: 100vw;
+
 }
 
 /** location and date fields container **/
@@ -16,8 +17,6 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /*padding: 5px;*/
-  /*margin:20px;*/
   min-height: 5vh;
   max-width: 100vw;
   justify-content: space-between;
@@ -80,7 +79,7 @@ input[type="date"]{
 .flex-content-container {
   display: flex;
   justify-content: center;
-  min-height: 51.3vh;
+  min-height: 55vh;
   max-width: 100vw;
   flex-wrap: wrap;
   padding:10px;
@@ -89,15 +88,6 @@ input[type="date"]{
 }
 
 
-.flex-content-container h1 {
-  color: #111;
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: normal;
-  letter-spacing: 1px;
-  line-height: 1;
-  opacity: 0.70;
-
-}
 
 .flex-content-container > .event {
   flex: 1 ;
@@ -112,6 +102,25 @@ input[type="date"]{
 
 }
 
+.event{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+}
+
+.event > h1{
+  flex:1 0 auto;
+  color: #111;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: normal;
+  letter-spacing: 1px;
+  line-height: 1;
+  opacity: 0.70;
+  font-size: large;
+}
+
+
 @-webkit-keyframes animatebottomevents {
   from { bottom:-100px; opacity:0 }
   to { bottom:0; opacity:1 }
@@ -122,28 +131,24 @@ input[type="date"]{
   to{ bottom:0; opacity:1 }
 }
 
-.event h1 {
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: bold;
-  letter-spacing: 1px;
-  line-height: 1;
-  opacity: 0.70;
-  font-size: large;
-}
-
-.event > button {
-
-  font-weight: bold;
-}
-
-.event-title a {
+.event > .event-title a {
+  flex:1 0 auto;
   target-name:new;
   target-new:tab;
 }
 
-.container-img img {
-  max-width: 100%;
+.event > .container-img {
+  flex:2 0 auto;
+
 }
+
+.event > button {
+  flex:1 0 auto;
+  min-width: 100%;
+  font-weight: bold;
+  max-height: 30px;
+}
+
 .event-location {
   color: gray;
   font-weight: bold;
@@ -152,8 +157,10 @@ input[type="date"]{
   opacity: 0.70;
 
 }
-.container-img {
-  max-width: 100%;
+.container-img > img{
+  width: min-content;
+  height: max-content;
+  padding-bottom: 3px;
 }
 
 .event-lineup {
@@ -164,6 +171,7 @@ input[type="date"]{
   opacity: 0.70;
   padding-bottom: 0;
 }
+
 
 /** PopUp box */
 .pop-up-1 .overlay {
