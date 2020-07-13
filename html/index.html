@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--  Scripts-->
-  <script type="text/javascript" src="../js/eventSearch.js" defer></script>
+  <script type="text/javascript" src="../js/index.js" defer></script>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js" defer></script>
 
   <meta name="description" content="">
@@ -37,21 +37,31 @@
   </div>
 </header>
 
+
 <div class="container-flex">
   <div class="input-fields-location-date">
       <label for="dateEvent"></label>
       <input type="date" id="dateEvent" name="dateEvent" max="2050-12-31" min="2019-1-1">
-      <label for="country"></label>
-      <select id="country" name="country">
-        <option value="Bulgaria">Bulgaria</option>
-        <option value="France">Paris</option>
-        <option value="Spain">Ibiza</option>
-        <option value="Germany">Berlin</option>
+      <label for="city"></label>
+      <select id="city" name="city">
+        <option value="Sofia/Bulgaria">Bulgaria</option>
+        <option value="Paris">Paris</option>
+        <option value="Ibiza">Ibiza</option>
+        <option value="Berlin">Berlin</option>
       </select>
       <button id="submitSearch" type="submit"><i class="fa fa-search" onclick="getDataFromFields();"></i></button>
     </div>
-  <div class="flex-content-container">
-<!--    <h1> No events in this location </h1>-->
+  <div class="pop-up-1" id="popUp-1">
+    <div class="overlay"></div>
+    <div class="content-pop-up">
+      <div class="close-btn" id="close-pop-up-1">&times;</div>
+      <h1 id="event-title-pop1"></h1>
+      <div class="container-image-pop-up-1" id="pop-up-1-img"></div>
+      <span id="event-location-pop1"></span>
+      <br>
+      <span id="event-line-up-pop1"></span>
+    </div>
+  <div class="flex-content-container" id="flex-content-container"></div>
   </div>
 </div>
 <footer>

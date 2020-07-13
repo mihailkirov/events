@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/contacts.css">
     <link rel="stylesheet" href="../css/footer.css">
-
-    <meta name="description" content="">
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js" defer></script>
+      <script type="text/javascript" src="../js/contacts.js" defer></script>
+      <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta property="og:title" content="">
@@ -44,39 +45,31 @@
       <div class="column">
         <img src="../contactImg.jpg" alt="Afterlife" style="width: 100%" height="500" >
       </div>
-
-      <div class="column">
-        <form action="/action_page.php">
-          <label for="fname">First Name</label>
-          <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-          <label for="lname">Last Name</label>
-          <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-          <label for="country">Country</label>
-          <select id="country" name="country">
-            <option value="Bulgaria">Sofia</option>
-            <option value="France">France</option>
-            <option value="Spain">Spain</option>
-            <option value="Germany">Germany</option>
-          </select>
-
-          <label for="subject">Subject</label>
-          <textarea id="subject" name="subject" placeholder="Write here" style="height:170px"></textarea>
-          <input type="submit" value="Submit">
-        </form>
-      </div>
-
+        <div class="column">
+          <form action="#" method="post">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name.."  required>
+            <label for="cityForm">Country</label>
+            <select id="cityForm" name="cityForm">
+              <option value="Sofia">Sofia</option>
+              <option value="Paris">Paris</option>
+              <option value="Ibiza">Ibiza</option>
+              <option value="Berlin">Berlin</option>
+            </select>
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write here" style="height:170px"  required></textarea>
+            <input type="submit" value="Submit" onclick="submitForm()">
+          </form>
+        </div>
     </div>
   </div>
-
-
 </div>
 <footer>
   <div class="footer" >
     <p> Dance with me ! </p>
   </div>
 </footer>
-
 </body>
 </html>

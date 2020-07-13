@@ -3,21 +3,23 @@
 const hostname = "0.0.0.0";
 const port = 62000;
 // requiring services
-let http = require("http");
-let https = require("https");
+const http = require("http");
+const https = require("https");
+const express = require("express");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-
 const baseUrl = "https://www.residentadvisor.net";
 
 const server = http.createServer((req, res) => {
 
-  // Process the request and extract the data
   if(req.method !== 'POST'){
-    res.statusCode = 404;
+    // for contact form
+    res.statusCode = 200;
+    console.log(req.method);
     res.setHeader('Content-Type', 'text/plain');
     return;
   }
+
 
   let body = [];
   req.on('data', (chunk) => {
@@ -81,14 +83,13 @@ function requestResidentAdvisor(date, location) {
 
 function parseDataHTML(data){
   /**
-   * HTML content parses
-   * @type {*[]}
+   * ResidentAdvisor HTML page content parser
+   * @type data - html in string
    */
 
   let events = []
   const dom = new JSDOM(data);
   let window = dom.window;
-  console.log("querying");
   let items = window.document.getElementById("items"); // events in the html
   let articles = items.querySelectorAll("li > article > a");
   items.querySelectorAll("li > article > .bbox").forEach(el => {
@@ -98,8 +99,7 @@ function parseDataHTML(data){
     obj.placeEvent = el.querySelector(".grey").textContent;
     obj.lineup = el.querySelector("div").textContent;
     let tmpRef = el.querySelector(".event-title > a").getAttribute("href");
-    obj.link = baseUrl + "/events" + tmpRef;
-    events.push(obj);
+    obj.link = baseUrl + tmpRef;
     articles.forEach(art => {
         if(art.getAttribute("href") === tmpRef){
           obj.imageLink = baseUrl + art.querySelector("noscript > img")
@@ -108,5 +108,6 @@ function parseDataHTML(data){
     });
     events.push(obj);
   });
+
   return events;
 }

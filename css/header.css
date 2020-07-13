@@ -30,7 +30,6 @@
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 
 
-
 /* Change the background color on mouse-over */
 .header a:hover {
   background-color: #ddd;
@@ -53,9 +52,16 @@
   .header a {
     float: none;
     display: block;
-    text-align: left;
+    text-align: center;
   }
   .header-right {
     float: none;
+  }
+  .header img {
+    height: 120px;
+    width: 40%;
+    margin-left: 0;
+    text-align: center;
+    vertical-align: middle;
   }
 }

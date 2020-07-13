@@ -23,6 +23,7 @@
   .footer p {
     float: none;
     display: block;
-    text-align: left;
+    text-align: center;
+    min-width: 100vw;
   }
 }

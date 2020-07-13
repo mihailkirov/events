@@ -7,37 +7,52 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  min-width: 100%;
-
-
+  max-width: 100vw;
 }
+
+/** location and date fields container **/
+
 .input-fields-location-date {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 5px;
-  min-height: 100%;
   margin:20px;
-  overflow: hidden;
-  justify-content: space-around;
-
+  min-height: 5vh;
+  max-width: 100vw;
+  justify-content: space-between;
+  -webkit-animation-name: animatesearchFields;
+  -webkit-animation-duration: 1s;
+  animation-name: animatesearchFields;
+  animation-duration: 1s
 }
 
-/*.input-fields-location-date > input, select, button {*/
-/*  flex:1 1 auto;*/
-/*  border:1px grey  solid;*/
-/*  text-align:center;*/
-/*  margin:5px;*/
-/*}*/
+@-webkit-keyframes animatesearchFields {
+  from { bottom:0; opacity:0 }
+  to { bottom:0; opacity:1 }
+}
+
+@keyframes animatesearchFields {
+  from{ bottom:0; opacity:0 }
+  to{ bottom:0; opacity:1 }
+}
+
+
+/** Content container **/
 
 .flex-content-container {
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 48vh;
+  max-width: 100vw;
+  flex-wrap: wrap;
+  padding:10px;
+  overflow: auto;
+  flex-direction: row;
+
 }
 
-
-#country {
+#city {
   font-family: "Helvetica", arial, sans-serif;
   font-size: 18px;
   padding :10px 5px;
@@ -46,8 +61,9 @@
 }
 
 input[type="date"]{
-  font-family: "Helvetica", arial, sans-serif;
-  font-size: 18px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: 0;
   padding :10px 5px;
   min-width: 30%;
   text-align: center;
@@ -66,6 +82,7 @@ input[type="date"]{
 
 }
 
+
 .flex-content-container h1 {
   color: #111;
   font-family: 'Helvetica Neue', sans-serif;
@@ -73,14 +90,203 @@ input[type="date"]{
   letter-spacing: 1px;
   line-height: 1;
   opacity: 0.70;
+
 }
 
+/** CSS for dynamic elements **/
+
+.event {
+  flex:1 1 auto;
+  margin:5px;
+  padding: 5px;
+  border: 1px solid #C0C0C0;
+  background: lightgray;
+  max-width: 20%;
+  max-height: 5%;
+  -webkit-animation-name: animatebottomevents;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottomevents;
+  animation-duration: 1s;
+  text-align: center;
+}
+
+@-webkit-keyframes animatebottomevents {
+  from { bottom:-100px; opacity:0 }
+  to { bottom:0; opacity:1 }
+}
+
+@keyframes animatebottomevents {
+  from{ bottom:-100px; opacity:0 }
+  to{ bottom:0; opacity:1 }
+}
+
+.event h1 {
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 1;
+  opacity: 0.70;
+  font-size: large;
+}
+
+.event > button {
+
+  font-weight: bold;
+}
+
+.event-title a {
+  target-name:new;
+  target-new:tab;
+}
+
+.container-img img {
+  max-width: 100%;
+}
+.event-location {
+  color: gray;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', sans-serif;
+  line-height: 1;
+  opacity: 0.70;
+
+}
+.container-img {
+  max-width: 100%;
+}
+
+.event-lineup {
+  color: gray;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', sans-serif;
+  line-height: 1;
+  opacity: 0.70;
+  padding-bottom: 0;
+}
+
+/** PopUp box */
+.pop-up-1 .overlay {
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  display: none;
+}
+
+.pop-up-1 .content-pop-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: #fff;
+  transition: all 200ms ease-in-out;
+  width: 550px;
+  height: 300px;
+  overflow: auto;
+  text-align: center;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.pop-up-1 .close-btn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  background: #222;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 30%;
+  cursor: pointer;
+}
+.pop-up-1.active .overlay {
+  display: block;
+}
+
+.pop-up-1.active .content-pop-up {
+  transition: all 300ms ease-in-out;
+  transform: translate(-50%, -45%) scale(1);
+}
+
+
+/** Spinner **/
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #A9A9A9;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/** When display varies **/
+
 @media screen and (max-width: 500px) {
-  .footer p {
+
+  .input-fields-location-date {
+    width: 100vw;
     float: none;
     display: block;
-    text-align: left;
+    text-align: center;
   }
+
+  #city {
+    width: 100vw;
+
+  }
+  #submitSearch{
+    width: 100vw;
+    height: 50px;
+  }
+
+  input[type="date"]{
+    width: 100vw;
+  }
+
+  .event {
+    float: none;
+    display: block;
+    min-width: 100vw;
+    margin-bottom: 5px;
+  }
+
+  .event > button {
+    width: 100vw;
+    padding-bottom: 0;
+  }
+
+  .flex-content-container{
+    float: none;
+    display: block;
+    width: 100vw;
+  }
+
+  .pop-up-1 > .content-pop-up {
+    width: 90vw;
+    float: none;
+    display: block;
+    text-align: center;
+  }
+
 }
 
 
