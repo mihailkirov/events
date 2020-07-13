@@ -7,6 +7,7 @@
   min-height: 5vh;
   flex-wrap: nowrap; /* to test */
 }
+
 /** about container **/
 .about-flex-container {
   margin-top: 0;
@@ -59,13 +60,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   text-align: center;
   padding-bottom: 3rem;
   padding-top: 5rem ;
 }
 
 .creator {
+  flex:1;
   position: relative;
   -webkit-animation-name: animatebottomcreators;
   -webkit-animation-duration: 1s;
@@ -104,10 +106,6 @@
 
 @media screen and (max-width: 500px) {
 
-  .creators-flex-container {
-    float: none;
-    display: block;
-  }
 
   .about-flex-container {
     float: none;

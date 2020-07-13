@@ -178,6 +178,8 @@ function apiRequest(location, date) {
     json: true,
     error: function (err, status) {
       alert("something went wrong with the server");
+      let containerContent = document.getElementById("flex-content-container");
+      containerContent.textContent = '';
     }
   }).done(data => uploadContainer(JSON.parse(data)));
 }
