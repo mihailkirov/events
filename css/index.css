@@ -95,6 +95,7 @@ input[type="date"]{
 
 /** CSS for dynamic elements **/
 
+
 .event {
   flex:1 1 auto;
   margin:5px;
@@ -237,7 +238,6 @@ input[type="date"]{
   100% { transform: rotate(360deg); }
 }
 
-
 /** When display varies **/
 
 @media screen and (max-width: 500px) {
@@ -278,10 +278,10 @@ input[type="date"]{
     float: none;
     display: block;
     width: 100vw;
+    justify-content: left;
   }
-
   .pop-up-1 > .content-pop-up {
-    width: 90vw;
+    width: 70vw;
     float: none;
     display: block;
     text-align: center;

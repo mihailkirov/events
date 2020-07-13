@@ -41,6 +41,15 @@ input[type=text], select, textarea {
   resize: vertical;
 }
 
+input[type=email] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
 input[type=submit] {
   background-color: #4CAF50;
   color: white;
@@ -73,8 +82,8 @@ input[type=submit]:hover {
   box-sizing: border-box;
 }
 
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+/* Responsive layout - when the screen is less than 500px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
   .column, input[type=submit] {
     width: 100%;
     margin-top: 0;

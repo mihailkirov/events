@@ -5,23 +5,22 @@ function submitForm() {
    * Taking the output from the user
    *
    */
-  let name = document.getElementById("fname");
-  let lastName = document.getElementById("lname");
+  let name = document.getElementById("name");
+  let email = document.getElementById("email");
   let loc = document.getElementById("cityForm");
   let subject = document.getElementById("subject");
 
-
   // temporary solution
   if(subject.value !== "" && name.value !== ""
-    && lastName.value !== ""){
+    && email.value !== ""){
     $.ajax({
       data : {
-        name: location,
-        lastName: lastName,
-        subject: subject
+        name: loc.value,
+        email: email.value,
+        subject: subject.value,
       },
       type: 'POST',
-      url: 'http://0.0.0.0:62000/',
+      url: 'http://0.0.0.0:62000/contact',
       json: true,
       error: function (err, status) {
         alert("something went wrong with the server");

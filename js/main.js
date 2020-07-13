@@ -1,4 +1,7 @@
-
+// module variables
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const baseUrl = "https://www.residentadvisor.net";
 // Setting the server parameters
 const hostname = "0.0.0.0";
 const port = 62000;
@@ -6,56 +9,50 @@ const port = 62000;
 const http = require("http");
 const https = require("https");
 const express = require("express");
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-const baseUrl = "https://www.residentadvisor.net";
-
-const server = http.createServer((req, res) => {
-
-  if(req.method !== 'POST'){
-    // for contact form
-    res.statusCode = 200;
-    console.log(req.method);
-    res.setHeader('Content-Type', 'text/plain');
-    return;
-  }
-
-
-  let body = [];
-  req.on('data', (chunk) => {
-      body.push(chunk);
-
-  }).on('end', () =>{
-    body = Buffer.concat(body).toString();
-    body = body.split('&');
-    body = body.map(token => {
-      return token.split('=')[1];
-    });
-    // if not correct message
-    if(body.length !== 2) {
-      res.statusCode = 404; // change to code for inappropriate content
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain');
-      res.setHeader("Access-Control-Allow-Origin", "http://localhost:63342");
-      res.end();
-    }
-    else {
-      // Query Resident advisor website
-      requestResidentAdvisor(body[0], body[1]).then(result => {
-        //console.log(result );
-        // Setting the response code, headers and body
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/plain');
-        res.setHeader("Access-Control-Allow-Origin", "http://localhost:63342");
-        res.end(JSON.stringify(result));
-      });
-    }
-  });
+const bodyParser = require("body-parser");
+const app = express();
+const server1 = http.Server(app);
+const helmet = require("helmet");
+app.use(helmet());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:63342');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept');
+  res.setHeader('Content-Type', "text/plain");
+  next();
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.options('*', function(req, res) {
+  res.send(200);
+});
 
+server1.listen(port, hostname, (err) => {
+  if(err){
+    throw err;
+  }
+  else
+    console.log(`Server running at http://${hostname}:${port}/`);
+});
+module.exports = server1;
+
+
+app.post('/events', (req, res) => {
+  // Query Resident advisor website
+  requestResidentAdvisor(req.body.date, req.body.country).then(result => {
+        // Setting the response code, headers and body
+    res.statusCode = 200;
+    res.end(JSON.stringify(result));
+  });
+
+});
+
+// For contact-form submission
+app.post('/contact', (req, res) => {
+  console.log(req.body);
+  res.statusCode = 200;
+  res.end();
 });
 
 
@@ -86,7 +83,6 @@ function parseDataHTML(data){
    * ResidentAdvisor HTML page content parser
    * @type data - html in string
    */
-
   let events = []
   const dom = new JSDOM(data);
   let window = dom.window;

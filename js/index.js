@@ -174,7 +174,7 @@ function apiRequest(location, date) {
       country: location,
     },
     type: 'POST',
-    url: 'http://0.0.0.0:62000/',
+    url: 'http://0.0.0.0:62000/events',
     json: true,
     error: function (err, status) {
       alert("something went wrong with the server");
@@ -183,7 +183,7 @@ function apiRequest(location, date) {
 }
 
 function openInNewTab(url) {
-  var win = window.open(url, '_blank');
+  let win = window.open(url, '_blank');
   win.focus();
 }
 
