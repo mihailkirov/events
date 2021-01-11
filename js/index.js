@@ -15,8 +15,10 @@ loader.classList.add("loader");
 
 // Bindings
 document.getElementById("submitSearch").addEventListener("click", getDataFromFields);
-document.getElementById('dateEvent').value = new Date().toDateInputValue();
-
+let today = new Date().toDateInputValue();
+document.getElementById('dateEvent').value =  today;
+document.getElementById('dateEvent').classList.add("min");
+document.getElementById('dateEvent').setAttribute("min", today);
 
 function getDataFromFields() {
   /**
@@ -67,13 +69,15 @@ function togglePopup(event) {
 
   // event location
   let location = document.getElementById("event-location-pop1");
-  location.append(document.createTextNode("at " + event.placeEvent))
+  if(event.lineup !== event.placeEvent)
+    location.append(document.createTextNode("at " + event.placeEvent))
   // event line-up
   lineup = document.getElementById("event-line-up-pop1");
+
   lineup.append(document.createTextNode("artists: " + event.lineup));
+  // button
   let clsbtn = document.getElementById("close-pop-up-1");
   // event image
-
   let contImg = document.getElementById("pop-up-1-img");
   let img = document.createElement("img");
   img.setAttribute("src", event.imageLink);
