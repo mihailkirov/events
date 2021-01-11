@@ -14,7 +14,9 @@
   "devDependencies": {
     "helmet": "^3.23.3",
     "nodemon": "^2.0.4",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "node-forge": "0.10.0",
+    "elliptic": ">=6.5.3"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
