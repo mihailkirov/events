@@ -13,6 +13,9 @@ const bodyParser = require("body-parser");
 const app = express();
 const server1 = http.Server(app);
 const helmet = require("helmet");
+jQuery.htmlPrefilter = function( html ) {
+  return html;
+};
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
