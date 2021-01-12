@@ -61,7 +61,7 @@ function requestResidentAdvisor(date, location) {
   // construct the url for the request
   let requestUrl =   baseUrl + "/events/" +  location + '/day/' + date;
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
       https.get(requestUrl, (resp) => {
         let data = '';
         resp.on('data', (chunk) => {
